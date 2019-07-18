@@ -20,7 +20,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
 app.listen(3030, () => {
-    console.log('Server on port 3030')
+    console.log('Servidor na porta 3030')
 })
 
 app.use('/planet', planet)
