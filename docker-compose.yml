@@ -1,0 +1,22 @@
+version: '2'
+services:
+  mongodb:
+    image: bitnami/mongodb:latest
+    ports: [
+      "27017:27017"
+    ]
+    volumes:
+      - /data/db:/data/db
+    environment:
+      - MONGODB_DATABASE=star-wars
+  web:
+    build: .
+    command: npm run dev
+    volumes:
+      - .:/app/
+      - /app/node_modules
+    ports: [
+      "3030:3030"
+    ]
+    depends_on:
+      - mongodb
