@@ -1,7 +1,7 @@
 const PlanetModel = require('../models/planet.model')
 const axios = require('axios')
 
-exports.getAll = (req, res) => {
+exports.getPlanet = (req, res) => {
     let query = {}
     if (req.query.name) {
         query = req.query
@@ -14,7 +14,7 @@ exports.getAll = (req, res) => {
     })
 }
 
-exports.getById = (req, res) => {
+exports.getPlanetById = (req, res) => {
     PlanetModel.findById(req.params.id, (err, results) => {
         if (err) {
             return res.send('Erro! Esse planeta não existe')
@@ -24,6 +24,9 @@ exports.getById = (req, res) => {
 }
 
 exports.createPlanet = (req, res) => {
+    if (!req.body.name) {
+        return res.send('Informe o nome do planeta!')
+    }
     axios.get(process.env.SWAPI_API, {
         params: {
             search: req.body.name
