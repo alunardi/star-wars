@@ -1,5 +1,6 @@
 # star-wars
 Projeto em nodejs
+<br>
 Build Setup
 # Instale o docker
 sudo apt install docker.io
@@ -17,7 +18,7 @@ docker-compose up
 # Para executar os testes unitários criados
 docker-compose -f docker-compose.test.yml up
 
-#API's disponíveis
+# API's disponíveis
 <br>
 <b>/planet</b> - lista todos os planetas
 <br>
