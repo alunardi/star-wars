@@ -2,7 +2,11 @@ const PlanetModel = require('../models/planet.model')
 const axios = require('axios')
 
 exports.getAll = (req, res) => {
-    PlanetModel.find({}, (err, results) => {
+    let query = {}
+    if (req.query.name) {
+        query = req.query
+    }
+    PlanetModel.find(query, (err, results) => {
         if (err) {
             return res.send('Erro ao listar os planetas')
         }
@@ -12,15 +16,6 @@ exports.getAll = (req, res) => {
 
 exports.getById = (req, res) => {
     PlanetModel.findById(req.params.id, (err, results) => {
-        if (err) {
-            return res.send('Erro! Esse planeta não existe')
-        }
-        res.send(results)
-    })
-}
-
-exports.getByName = (req, res) => {
-    PlanetModel.findOne({'name': req.params.name}, (err, results) => {
         if (err) {
             return res.send('Erro! Esse planeta não existe')
         }
