@@ -3,9 +3,9 @@ const router = express.Router()
 
 const planetController = require('../controllers/planet.controller')
 
-router.get('/', planetController.getAll)
+router.get('/', planetController.getPlanet)
 
-router.get('/id/:id', planetController.getById)
+router.get('/id/:id', planetController.getPlanetById)
 
 router.post('/create', planetController.createPlanet)
 
