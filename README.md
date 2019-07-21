@@ -15,6 +15,14 @@ docker build -t star-wars .
 # Execute o comando docker-compose up para construir a aplicação
 docker-compose up
 
+# Entre no container do mongo para criar as collections
+docker-compose exec mongodb mongo
+
+# Dentro do container, informe os comandos:
+use star-wars;
+<br>
+db.createCollection('planets');
+
 # Para executar os testes unitários criados
 docker-compose -f docker-compose.test.yml up
 
